@@ -1,0 +1,71 @@
+version: "3.9"
+
+services:
+  app-news-stories:
+    build: ./backend/news_stories/.
+    container_name: news_stories
+    volumes:
+      - ./backend/news_stories:/home
+    depends_on:
+      - redis
+    restart: always
+    networks:
+      - backend-network
+    env_file: ./backend/news_stories/.env
+    ports:
+      - "8000:8000"
+  
+  app-news-stories-tests:
+    build: ./backend/news_stories/.
+    container_name: news_stories_tests
+    volumes:
+      - ./backend/news_stories:/home
+    depends_on:
+      - redis
+    networks:
+      - backend-network
+    env_file: ./backend/news_stories/.env
+    command: ["pytest", "tests/"]
+    environment:
+      - ENV=test
+
+  redis:
+    image: redis:latest
+    container_name: redis_container
+    ports:
+      - "6379:6379"
+    restart: always
+    networks:
+      - backend-network
+    volumes:
+      - redis-data:/data
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:80" 
+    networks:
+      - backend-network
+    depends_on:
+      - app-news-stories 
+
+  frontend-tests:
+    build:
+      context: ./frontend
+      target: build  
+    container_name: frontend_tests
+    working_dir: /app
+    command: ["npm", "run", "test"]
+    depends_on:
+      - app-news-stories
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+
+volumes:
+  redis-data:
