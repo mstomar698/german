@@ -14,9 +14,9 @@ git clone https://github.com/mstomar698/german
 # 2. Create .env files from .env.example files
 cp backend/news_stories/.env.example backend/news_stories/.env
 cp frontend/.env.example frontend/.env
-# 2. Build and Run the Project
+# 3. Build and Run the Project
 docker-compose up --build
-# 3. Navigate to localhost:3000 in your browser
+# 4. Navigate to localhost:3000 in your browser
 ```
 
 ## API Documentation
