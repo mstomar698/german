@@ -10,7 +10,7 @@ This will help you set up and run the assignment project on your local machine u
 
 ```bash
 # 1. Clone the Repository
-git clone <repository_url>
+git clone https://github.com/mstomar698/german
 # 2. Build and Run the Project
 docker-compose up --build
 # 3. Navigate to localhost:3000 in your browser
