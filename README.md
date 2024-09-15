@@ -11,6 +11,9 @@ This will help you set up and run the assignment project on your local machine u
 ```bash
 # 1. Clone the Repository
 git clone https://github.com/mstomar698/german
+# 2. Create .env files from .env.example files
+cp backend/news_stories/.env.example backend/news_stories/.env
+cp frontend/.env.example frontend/.env
 # 2. Build and Run the Project
 docker-compose up --build
 # 3. Navigate to localhost:3000 in your browser
