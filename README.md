@@ -22,7 +22,7 @@ docker-compose up --build
 ## API Documentation
  
 ### Backend
-- **API Documentation**: [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+- **API Documentation**: [http://localhost:8000/docs](http://localhost:8000/docs)
 > Note: The API documentation is accessible only when the project is running. <br />
 > Note: The default documenation provided by Swagger UI is used for API documentation. 
 
